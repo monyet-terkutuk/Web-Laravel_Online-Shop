@@ -38,4 +38,9 @@ Route::get('/dashboard/setting', [App\Http\Controllers\DashboardSettingControlle
 Route::get('/dashboard/transactions', [App\Http\Controllers\DashboardTransactionController::class, 'transaction'])->name('dashboard-transactions');
 Route::get('/dashboard/transaction/{id?}', [App\Http\Controllers\DashboardTransactionController::class, 'transactionDetails'])->name('dashboard-transactions-details');
 
+// Route::get('/admin', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin');
+// ->middleware(['auth', 'admin'])
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('admin');
+});
 Auth::routes();
