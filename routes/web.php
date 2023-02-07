@@ -42,5 +42,8 @@ Route::get('/dashboard/transaction/{id?}', [App\Http\Controllers\DashboardTransa
 // ->middleware(['auth', 'admin'])
 Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::get('/', 'DashboardController@index')->name('admin');
+    Route::resource('category', 'CategoryController');
 });
+
+
 Auth::routes();
